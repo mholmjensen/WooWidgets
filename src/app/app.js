@@ -2,7 +2,7 @@
 
 (function () {
 
-	angular.module('woo', ['templates', 'ui.router', 'ngClipboard', 'dndLists',
+	angular.module('woo', ['templates', 'ui.router', 'ngDraggable', 'dndLists',
 												 'woo.config' ])
 
 	.config(function(ngClipProvider) {
