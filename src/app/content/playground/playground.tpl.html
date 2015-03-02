@@ -1,0 +1,51 @@
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="well well-sm">
+			<div class="woo-toolbar"
+					 woo-toolbar>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-1 col-md-offset-1">
+		<div class="panel panel-info">
+			<div class="panel-heading">Browser</div>
+			<div class="panel-body">
+				<div class="woo-browser"
+						 woo-browser
+						 files="browser.files"
+						 transformation="transformation.currentTransformation"
+						 candidate="candidate.currentCandidate"
+						 paper="paper.currentPaper">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">Transformations</div>
+			<div class="panel-body">
+				<div class="woo-transformation"
+						 woo-transformation
+						 transformation="transformation.currentTransformation"
+						 candidate="candidate.currentCandidate">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6 col-md-offset-0">
+		<div class="panel panel-info">
+			<div class="panel-heading">Paper</div>
+			<div class="panel-body">
+				<div class="woo-paper"
+						 woo-paper
+				     paper="paper.currentPaper"
+						 transformation="transformation.currentTransformation"
+						 candidate="candidate.currentCandidate">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

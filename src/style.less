@@ -1,0 +1,144 @@
+@import "../vendor/bootstrap/less/variables.less";
+@import "../vendor/animate.css/animate.css";
+
+@gray-lightest: lighten(@gray-base, 97.25%);
+@border-color: darken(@gray-lightest, 6.5%);
+
+.logo {
+  max-width: 90%;
+  margin: 20px;
+}
+
+@fadeInSpeed: 500ms;
+@fadeOutSpeed: 300ms;
+
+
+.navbar {
+  // Fallback for old browsers
+  //background: #000;
+  //background: rgba(0,0,0,0.8);
+  border: 0;
+}
+
+mark {
+  padding: 0px;
+  background-color: rgba( 255, 165, 0, 1);
+}
+
+// Bootstrap namespace
+.alert-attention {
+  color: #31708f;
+  background-color: rgba( 255, 165, 0, 1);
+  border-color: rgba( 255, 165, 0, 1);
+}
+
+.btn-suggested {
+    color: #333;
+    background-color: rgba( 10, 220, 130, 1);
+    border-color: rgba( 10, 220, 130, 1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* woo classes */
+.woo-content {
+  margin-top: 59px;
+}
+
+.woo-playground {
+
+}
+
+
+// Default scope class
+/*
+.ng-scope  {
+  border: 1px solid rgba(10, 10, 10, 1);
+}
+
+.woo-content .ng-scope  {
+  border: 1px solid rgba(10, 200, 200, 1);
+}
+
+.woo-playground .ng-scope  {
+  border: 1px solid rgba(200, 10, 10, 1);
+}
+
+.woo-browser, .woo-toolbar, .woo-paper, .woo-transformation .ng-scope  {
+  border: 1px solid rgba(10, 10, 200, 1);
+}
+
+.woo-line, .woo-candidate .ng-scope, .ng-isolate-scope  {
+  border: 1px solid rgba(200, 10, 200, 1);
+}
+
+.woo-word .ng-scope  {
+  border: 1px solid rgba(10, 200, 10, 1);
+}
+*/
+
+/*  */
+.woo-toolbar {
+}
+
+/* Custom Widgets Styling */
+.woo-line {
+  display: block;
+}
+
+.woo-line-empty {
+  display: block;
+  height: 18px;
+}
+
+
+.woo-btn-paper-mode {
+  position: absolute;
+  right: 30px;
+}
+
+.woo-paper-textarea {
+  padding: 10px 20px;
+  border-left: 5px solid #eee;
+  margin-bottom: 10px;
+}
+
+.woo-paper-blockquote {
+  background-color: rgba(235, 235, 235, 0.22);
+}
+
+
+/* Browser */
+.woo-browser-file-list {
+  list-style: none;
+}
+
+/**
+ * The dndDraggingSource class will be applied to
+ * the source element of a drag operation. It makes
+ * sense to hide it to give the user the feeling
+ * that he's actually moving it.
+ */
+ .woo-browser-file-list .dndDraggingSource {
+    display: none;
+}
+
+/**
+ * An element with .dndPlaceholder class will be
+ * added to the dnd-list while the user is dragging
+ * over it.
+ */
+ .woo-browser-file-list .dndPlaceholder {
+    display: block;
+    background-color: #eee;
+    min-height: 42px;
+}

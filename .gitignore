@@ -1,0 +1,12 @@
+# Generic
+*.DS_Store
+.com.apple.timemachine.supported
+*~
+
+# Node
+/node_modules/
+npm-debug.log
+
+# Gulp build
+/build/
+/vendor/
