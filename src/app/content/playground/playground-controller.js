@@ -9,6 +9,8 @@
 
     var initialFile = PlaygroundService.files[0];
 
+    var files = PlaygroundService.files;
+
     $scope.areas = [
       {
         settings: { //TODO move settings to files..
@@ -21,7 +23,7 @@
         },
         content: {
           browser: {
-            files: PlaygroundService.files
+            files: files
           },
           transformation: {
             current: initialFile.content.transformation
@@ -43,7 +45,7 @@
         },
         content: {
           browser: {
-            files: PlaygroundService.files
+            files: files
           },
           transformation: {
             current: initialFile.content.transformation
@@ -65,7 +67,7 @@
         },
         content: {
           browser: {
-            files: PlaygroundService.files
+            files: files
           },
           transformation: {
             current: initialFile.content.transformation
