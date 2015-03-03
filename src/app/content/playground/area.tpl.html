@@ -1,0 +1,34 @@
+<div>
+	<div class="panel panel-{{panelType}}">
+		<div class="panel-heading">{{woo}}</div>
+		<div class="panel-body"
+				 ng-switch="woo">
+			<div ng-switch-when="Browser"
+					class="woo-browser"
+					woo-browser
+					files="content.browser.files"
+					transformation="content.transformation.current"
+					candidate="content.candidate.current"
+					paper="content.paper.current">
+			</div>
+			<div ng-switch-when="Paper"
+					class="woo-paper"
+					woo-paper
+					transformation="content.transformation.current"
+					candidate="content.candidate.current"
+					paper="content.paper.current">
+			</div>
+			<div ng-switch-when="Transformation"
+					 class="woo-transformation"
+					 woo-transformation
+					 transformation="content.transformation.current"
+					 candidate="content.candidate.current">
+			</div>
+			<div ng-switch-default
+					class="woo-missing">
+					Unknown woo
+			</div>
+		</div>
+		</div>
+	</div>
+</div>

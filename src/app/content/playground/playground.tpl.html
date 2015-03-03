@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
 	<div class="col-md-10 col-md-offset-1">
 		<div class="well well-sm">
 			<div class="woo-toolbar"
@@ -47,5 +47,17 @@
 				</div>
 			</div>
 		</div>
+	</div>
+</div> -->
+
+<div class="woo-toolbar"
+		 woo-toolbar>
+</div>
+<div ng-repeat="area in areas track by $index">
+	<div woo-area panel-type="info"
+			 woo="area.settings.woo"
+			 offset-left="area.settings.offsetLeft"
+			 offset-top="area.settings.offsetTop"
+			 content="area.content">
 	</div>
 </div>

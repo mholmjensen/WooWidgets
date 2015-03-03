@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	angular.module('playground', [ 'playground.controller',
+	angular.module('playground', [ 'playground.controller', 'playground.area',
 																 'playground.toolbar', 'playground.browser', 'playground.transformation', 'playground.paper' ])
 
 	// TODO: Floating widgets
@@ -15,6 +15,7 @@
       controllerAs: 'playgroundCtrl'
 		};
 	})
+
 	;
 
 }());
