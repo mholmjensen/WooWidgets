@@ -13,6 +13,7 @@
     this.list = {
       moved: function(event, index, file) {
         $scope.files.splice(index, 1);
+        //TODO drag and drop should work
       },
       selected: function(file) {
         self.status.selected = file;

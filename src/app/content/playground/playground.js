@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	angular.module('playground', [ 'playground.controller',
+	angular.module('playground', [ 'playground.controller', 'playground.area',
 																 'playground.toolbar', 'playground.browser', 'playground.transformation', 'playground.paper' ])
 
 	// TODO: Floating widgets
@@ -12,33 +12,7 @@
 			scope: true,
 			templateUrl: 'app/content/playground/playground.tpl.html',
       controller: 'PlaygroundController',
-      controllerAs: 'playgroundCtrl',
-			link: function(scope, iElement, iAttrs, controller, transcludeFn) {
-				console.log(scope);
-				console.log(iElement);
-				console.log(iAttrs);
-
-				console.log(controller);
-				console.log(transcludeFn);
-				console.log('test');
-			}
-		};
-	})
-
-	.directive('wooArea', function() {
-		return {
-			restrict: 'EA',
-			transclude: true,
-			templateUrl: 'app/content/playground/area.tpl.html',
-			link: function(scope, iElement, iAttrs, controller, transcludeFn) {
-				console.log(scope);
-				console.log(iElement);
-				console.log(iAttrs);
-
-				console.log(controller);
-				console.log(transcludeFn);
-				console.log('test');
-			}
+      controllerAs: 'playgroundCtrl'
 		};
 	})
 
