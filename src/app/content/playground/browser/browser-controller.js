@@ -18,6 +18,7 @@
       selected: function(file) {
         self.status.selected = file;
         console.log($scope.transformation);
+        console.log(file);
         $scope.transformation = file.content.transformation;
         $scope.candidate = file.content.candidate;
         $scope.paper = file.content.paper;

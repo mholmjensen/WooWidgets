@@ -7,6 +7,7 @@
     // scope owner, meaning it is root and owns all data
     // all data shared with children is done via an isolated scope for a directive
 
+    //FIXME incorrect references here leads to non-responsive browser
     var initialFile = PlaygroundService.files[0];
 
     var files = PlaygroundService.files;
