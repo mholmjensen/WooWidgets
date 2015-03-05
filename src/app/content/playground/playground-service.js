@@ -184,13 +184,13 @@
 				areas: [{
 						woo: 'Paper',
 						layout: {
-							offsetLeft: 740,
+							offsetLeft: 300, // FIXME offsets not working between files
 	          	offsetTop: 130
 						}
 					}, {
 						woo: 'Transformation',
 						layout: {
-							offsetLeft: 300,
+							offsetLeft: 950,
 		          offsetTop: 130
 						}
 					},

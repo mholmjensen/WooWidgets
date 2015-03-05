@@ -56,20 +56,18 @@
  -->
 
 <!-- make browser into a dock -->
-<div woo-area panel-type="primary"
+<div woo-area class="woo-area"
+ 		 panel-type="primary"
 		 woo="Browser"
-	 	 offset-left="145"
-		 offset-top="130"
+		 layout="browser.layout"
 		 browser="browser">
 </div>
 
-{{browser.currentFile.name}}
-
 <div ng-repeat="area in browser.currentFile.woo.areas track by $index">
-	<div woo-area panel-type="info"
+	<div woo-area class="woo-area"
+			 panel-type="info"
 			 woo="{{area.woo}}"
-			 offset-left="area.layout.offsetLeft"
-			 offset-top="area.layout.offsetTop"
+			 layout="area.layout"
 			 current-file="browser.currentFile">
 	</div>
 </div>

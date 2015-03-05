@@ -14,44 +14,59 @@
 			scope: {
 				name: '@',
 				panelType: '@',
-				offsetLeft: '=',
-				offsetTop: '=',
+				layout: '=',
 				browser: '=',
 				currentFile: '=',
 				woo: '@'
 			},
 			templateUrl: 'app/content/playground/area.tpl.html',
 			link: function(scope, elem) {
+				scope.position = {
+					position: 'absolute',
+					top: scope.layout.offsetTop + 'px',
+					left: scope.layout.offsetLeft + 'px'
+				};
 
-				elem.css({
-					top: scope.offsetTop + 'px',
-					left: scope.offsetLeft + 'px'
-				});
-
-				var startX, startY, initialMouseX, initialMouseY;
-				elem.css({position: 'absolute'});
-
-				elem.bind('mousedown', function($event) {
-          startX = elem.prop('offsetLeft');
-          startY = elem.prop('offsetTop');
-          initialMouseX = $event.clientX;
-          initialMouseY = $event.clientY;
-					$document.bind('mousemove', mousemove);
-					$document.bind('mouseup', mouseup);
+				var startX = 0, startY = 0, x = 0, y = 0;
+				scope.drag = function( $event ) {
+					console.log('dragged');
+					event.preventDefault();
+		      startX = $event.pageX - x;
+		      startY = $event.pageY - y;
+		      $document.bind('mousemove', mousemove);
+		      $document.bind('mouseup', mouseup);
           return false;
-        });
+				};
+
+				// elem.bind('mousedown', function($event) {
+        //   startX = elem.prop('offsetLeft');
+        //   startY = elem.prop('offsetTop');
+        //   initialMouseX = $event.clientX;
+        //   initialMouseY = $event.clientY;
+				// 	$document.bind('mousemove', mousemove);
+				// 	$document.bind('mouseup', mouseup);
+        //   return false;
+        // });
 
         var mousemove = function ($event) {
-          var dx = $event.clientX - initialMouseX;
-          var dy = $event.clientY - initialMouseY;
-					elem.css({
-            top:  startY + dy + 'px',
-            left: startX + dx + 'px'
-          });
+					console.log('mousemove');
+
+					y = $event.pageY - startY;
+		      x = $event.pageX - startX;
+					scope.position = {
+						position: 'absolute',
+            top:  startY + y + 'px',
+            left: startX + x + 'px'
+          };
+					elem.css( scope.position );
+
+					console.log( scope.position );
+
           return false;
         };
 
 				var mouseup = function() {
+					console.log('*** mouseup *** ');
 					$document.unbind('mousemove', scope.mousemove);
 					$document.unbind('mouseup', scope.mouseup);
         };
