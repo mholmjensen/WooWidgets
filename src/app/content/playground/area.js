@@ -3,8 +3,10 @@
 
 	angular.module('playground.area', [ 'playground.toolbar', 'playground.browser', 'playground.transformation', 'playground.paper' ])
 
-	// TODO: Floating widgets
 	// TODO Show active (last clicked) widget using panel-primary and panel-info
+
+	// TODO snap areas to percentages using relative coords
+	// TODO dragable (or lockable) on/off in panel top
 
 	.directive('wooArea', function( $document ) {
 		return {
@@ -14,8 +16,9 @@
 				panelType: '@',
 				offsetLeft: '=',
 				offsetTop: '=',
-				content: '=',
-				woo: '='
+				browser: '=',
+				currentFile: '=',
+				woo: '@'
 			},
 			templateUrl: 'app/content/playground/area.tpl.html',
 			link: function(scope, elem) {

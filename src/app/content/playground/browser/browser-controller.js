@@ -6,22 +6,13 @@
   .controller('PlaygroundBrowserController', function( $scope ) {
     var self = this;
 
-    this.status = {
-      selected: $scope.files[0]
-    };
-
     this.list = {
       moved: function(event, index, file) {
-        $scope.files.splice(index, 1);
+        //$scope.files.splice(index, 1);
         //TODO drag and drop should work
       },
       selected: function(file) {
-        self.status.selected = file;
-        console.log($scope.transformation);
-        console.log(file);
-        $scope.transformation = file.content.transformation;
-        $scope.candidate = file.content.candidate;
-        $scope.paper = file.content.paper;
+        $scope.browser.currentFile = file;
       }
     };
 

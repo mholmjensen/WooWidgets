@@ -6,30 +6,26 @@
 			<div ng-switch-when="Browser"
 					class="woo-browser"
 					woo-browser
-					files="content.browser.files"
-					transformation="content.transformation.current"
-					candidate="content.candidate.current"
-					paper="content.paper.current">
+					browser="browser">
 			</div>
 			<div ng-switch-when="Paper"
 					class="woo-paper"
 					woo-paper
-					transformation="content.transformation.current"
-					candidate="content.candidate.current"
-					paper="content.paper.current">
+					transformation="currentFile.payload.transformation"
+					candidate="currentFile.payload.candidate"
+					paper="currentFile.payload.paper">
 			</div>
 			<div ng-switch-when="Transformation"
 					 class="woo-transformation"
 					 woo-transformation
-					 transformation="content.transformation.current"
-					 candidate="content.candidate.current">
+					 transformation="currentFile.payload.transformation"
+					 candidate="currentFile.payload.candidate">
 			</div>
 			<div ng-switch-default
 					class="woo-missing">
-					Unknown woo
+					Unknown woo: '{{woo}}'
 			</div>
 		</div>
+	{{currentFile.name}}
 	</div>
-
-	{{content.transformation.current}}
 </div>
