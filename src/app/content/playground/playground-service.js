@@ -153,9 +153,9 @@
 
 
 
-    // TODO when laying out, use whether area or <other container name> is set
-    // So an area is always something flowing, a cell might be fixed in a grid,
-    // a dock might be attached to a side
+		// TODO when laying out, use whether area or <other container name> is set
+		// So an area is always something flowing, a cell might be fixed in a grid,
+		// a dock might be attached to a side
 
 		var woos = [
 			{
@@ -163,20 +163,18 @@
 					{
 						woo: 'Paper',
 						layout: {
-							offsetLeft: 740,
-	          	offsetTop: 130
+							style: {
+								left: 740,
+								top: 130
+							}
 						}
 					}, {
 						woo: 'Transformation',
 						layout: {
-							offsetLeft: 300,
-		          offsetTop: 130
-						}
-					}, {
-						woo: 'Paper',
-						layout: {
-							offsetLeft: 300,
-	          	offsetTop: 530
+							style: {
+								left: 300,
+								top: 130
+							}
 						}
 					}
 				],
@@ -188,56 +186,79 @@
 			},
 			{
 				areas: [{
-						woo: 'Paper',
-						layout: {
-							offsetLeft: 300, // FIXME offsets not working between files
-	          	offsetTop: 130
+					woo: 'Paper',
+					layout: {
+						style: {
+							left: 300, // FIXME offsets not working between files
+							top: 130
 						}
-					}, {
-						woo: 'Transformation',
-						layout: {
-							offsetLeft: 950,
-		          offsetTop: 130
+					}
+				}, {
+					woo: 'Transformation',
+					layout: {
+						style: {
+							left: 950,
+							top: 130
 						}
-					},
-				]
-			}
-		];
-
-		var service = {
-			files: [
-				{
-					name: 'F1',
-					type: 'paper',
-					woo: woos[0],
-					payload: contents[0]
-				},
-				{
-					name: 'F2',
-					type: 'logic',
-					woo: woos[1],
-					payload: contents[1]
-				},
-				{
-					name: 'F3',
-					type: 'paper',
-					woo: woos[2],
-					payload: contents[2]
+					}
+				}, {
+					woo: 'Paper',
+					layout: {
+						style: {
+							left: 300,
+							top: 530
+						}
+					}
 				}
-				// ,
-				// {
-				// 	name: 'F4',
-				// 	type: 'tabs',
-				// 	woo: woos[2],
-				// 	payload: contents[2]
-				// }
 			]
-		};
+		}
+	];
+
+	var files = [
+		{
+			name: 'F1',
+			type: 'paper',
+			woo: woos[0],
+			payload: contents[0]
+		},
+		{
+			name: 'F2',
+			type: 'logic',
+			woo: woos[1],
+			payload: contents[1]
+		},
+		{
+			name: 'F3',
+			type: 'paper',
+			woo: woos[2],
+			payload: contents[2]
+		}
+		// ,
+		// {
+		// 	name: 'F4',
+		// 	type: 'tabs',
+		// 	woo: woos[2],
+		// 	payload: contents[2]
+		// }
+	];
 
 
-		return service;
+	var playground = {
+		browser: {
+			layout: {
+				style: {
+					left: 100,
+					top: 130
+				}
+			},
+			files: files,
+			currentFile: files[0]
+		}
+	};
 
-	})
-	;
+	return playground;
+
+})
+;
 
 }());
