@@ -21,16 +21,23 @@
 			},
 			templateUrl: 'app/content/playground/area.tpl.html',
 			link: function(scope, elem) {
-				scope.position = {
-					position: 'absolute',
-					top: scope.layout.offsetTop + 'px',
-					left: scope.layout.offsetLeft + 'px'
-				};
+				// scope.position = {
+				// 	position: 'absolute',
+				// 	top: scope.layout.offsetTop + 'px',
+				// 	left: scope.layout.offsetLeft + 'px'
+				// };
+
+				// elem.css( {
+				// 	position: 'absolute',
+				// 	top: scope.layout.offsetTop + 'px',
+				// 	left: scope.layout.offsetLeft + 'px'
+				// } );
+
 
 				var startX = 0, startY = 0, x = 0, y = 0;
 				scope.drag = function( $event ) {
-					console.log('dragged');
-					event.preventDefault();
+					console.log('dragged2');
+					$event.preventDefault();
 		      startX = $event.pageX - x;
 		      startY = $event.pageY - y;
 		      $document.bind('mousemove', mousemove);
@@ -53,20 +60,19 @@
 
 					y = $event.pageY - startY;
 		      x = $event.pageX - startX;
-					scope.position = {
-						position: 'absolute',
-            top:  startY + y + 'px',
-            left: startX + x + 'px'
-          };
-					elem.css( scope.position );
+					// scope.position = {
+					// 	position: 'absolute',
+          //   top:  startY + y + 'px',
+          //   left: startX + x + 'px'
+          // };
 
-					console.log( scope.position );
+					scope.layout.offsetTop = startY + y;
+					scope.layout.offsetLeft = startX + x;
 
           return false;
         };
 
 				var mouseup = function() {
-					console.log('*** mouseup *** ');
 					$document.unbind('mousemove', scope.mousemove);
 					$document.unbind('mouseup', scope.mouseup);
         };

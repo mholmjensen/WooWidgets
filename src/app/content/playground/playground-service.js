@@ -172,7 +172,13 @@
 							offsetLeft: 300,
 		          offsetTop: 130
 						}
-					},
+					}, {
+						woo: 'Paper',
+						layout: {
+							offsetLeft: 300,
+	          	offsetTop: 530
+						}
+					}
 				],
 				docks: [], // TODO add docks and cells
 				cells: []

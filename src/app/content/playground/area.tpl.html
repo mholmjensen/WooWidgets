@@ -1,10 +1,11 @@
 <div class="panel panel-{{panelType}}"
-ng-style="position"
+style="position: absolute; top: {{layout.offsetTop}}px; left: {{layout.offsetLeft}}px;"
 		>
 	<div class="panel-heading"
 			 ng-mousedown="drag( $event )"
 			 >
-		{{position}}
+		{{woo}}
+		{{layout.offsetTop}} // {{layout.offsetLeft}}
 	</div>
 	<div class="panel-body"
 			 ng-switch="woo">
