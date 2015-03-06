@@ -50,14 +50,24 @@
 	</div>
 </div> -->
 
-<div class="woo-toolbar"
+<!-- <div class="woo-toolbar"
 		 woo-toolbar>
 </div>
-<div ng-repeat="area in areas track by $index">
-	<div woo-area panel-type="info"
-			 woo="area.settings.woo"
-			 offset-left="area.settings.offsetLeft"
-			 offset-top="area.settings.offsetTop"
-			 content="area.content">
+ -->
+
+<!-- make browser into a dock -->
+<div woo-area class="woo-area"
+ 		 panel-type="primary"
+		 woo="Browser"
+		 layout="browser.layout"
+		 browser="browser">
+</div>
+
+<div ng-repeat="area in browser.currentFile.woo.areas track by $index">
+	<div woo-area class="woo-area"
+			 panel-type="info"
+			 woo="{{area.woo}}"
+			 layout="area.layout"
+			 current-file="browser.currentFile">
 	</div>
 </div>

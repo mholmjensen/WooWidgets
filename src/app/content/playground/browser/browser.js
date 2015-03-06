@@ -9,10 +9,7 @@
     return {
       restrict: 'EA',
       scope: {
-				files: '=files',
-				transformation: '=transformation',
-				candidate: '=candidate',
-				paper: '=paper'
+				browser: '='
 			},
       templateUrl: 'app/content/playground/browser/browser.tpl.html',
       controller: 'PlaygroundBrowserController',

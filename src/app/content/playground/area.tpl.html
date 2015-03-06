@@ -1,34 +1,35 @@
-<div>
-	<div class="panel panel-{{panelType}}">
-		<div class="panel-heading">{{woo}}</div>
-		<div class="panel-body"
-				 ng-switch="woo">
-			<div ng-switch-when="Browser"
-					class="woo-browser"
-					woo-browser
-					files="content.browser.files"
-					transformation="content.transformation.current"
-					candidate="content.candidate.current"
-					paper="content.paper.current">
-			</div>
-			<div ng-switch-when="Paper"
-					class="woo-paper"
-					woo-paper
-					transformation="content.transformation.current"
-					candidate="content.candidate.current"
-					paper="content.paper.current">
-			</div>
-			<div ng-switch-when="Transformation"
-					 class="woo-transformation"
-					 woo-transformation
-					 transformation="content.transformation.current"
-					 candidate="content.candidate.current">
-			</div>
-			<div ng-switch-default
-					class="woo-missing">
-					Unknown woo
-			</div>
+<div class="panel panel-{{panelType}}"
+style="position: absolute; top: {{layout.offsetTop}}px; left: {{layout.offsetLeft}}px;"
+		>
+	<div class="panel-heading"
+			 ng-mousedown="drag( $event )"
+			 >
+		{{woo}}
+		{{layout.offsetTop}} // {{layout.offsetLeft}}
+	</div>
+	<div class="panel-body"
+			 ng-switch="woo">
+		<div ng-switch-when="Browser"
+				class="woo-browser"
+				woo-browser
+				browser="browser">
 		</div>
+		<div ng-switch-when="Paper"
+				class="woo-paper"
+				woo-paper
+				transformation="currentFile.payload.transformation"
+				candidate="currentFile.payload.candidate"
+				paper="currentFile.payload.paper">
+		</div>
+		<div ng-switch-when="Transformation"
+				 class="woo-transformation"
+				 woo-transformation
+				 transformation="currentFile.payload.transformation"
+				 candidate="currentFile.payload.candidate">
+		</div>
+		<div ng-switch-default
+				class="woo-missing">
+				Unknown woo: '{{woo}}'
 		</div>
 	</div>
 </div>
