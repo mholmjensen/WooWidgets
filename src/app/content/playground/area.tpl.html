@@ -1,4 +1,6 @@
-<div class="panel panel-{{panelType}}" ng-style="test">
+<div class="panel panel-{{panelType}}"
+		 style="position: absolute; top: {{layout.style.top}}px; left: {{layout.style.left}}px;"
+		 >
 	<div class="panel-heading woo-area-header"
 			 ng-mousedown="dragStart( $event )">
 			 {{woo}}

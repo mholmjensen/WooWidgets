@@ -3,22 +3,20 @@
 </div>
  -->
 
- {{browser.layout}}
- {{browser.currentFile.woo.areas}}
+ <!-- {{browser.layout}}
 
  <br>
  <br>
  <br>
  <br>
- <br>
+ <br> -->
 
 <!-- make browser into a dock -->
 <div woo-area class="woo-area"
  		 panel-type="primary"
 		 woo="Browser"
 		 browser="browser"
-     layout="browser.layout"
-     ng-style="browser.layout.style">
+     layout="browser.layout">
 </div>
 
 <div ng-repeat="area in browser.currentFile.woo.areas track by $index">
@@ -27,7 +25,7 @@
 			 woo="{{area.woo}}"
 			 area="area"
        layout="area.layout"
-       style="top: {{:: area.layout.style.top}}px; left: {{:: area.layout.style.left}}px"
 			 browser="browser">
 	</div>
+  <!-- {{browser.currentFile.name}}: {{area.woo}}, {{area.layout}} -->
 </div>

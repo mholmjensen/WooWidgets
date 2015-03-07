@@ -21,36 +21,37 @@
 				woo: '@'
 			},
 			templateUrl: 'app/content/playground/area.tpl.html',
-			link: function(scope, element, attr) {
-				var unit = 'px';
+			link: function(scope) {
 				var startX = 0, startY = 0, x = 0, y = 0;
 
-				x = scope.layout.style.left;
-				y = scope.layout.style.top;
 
 				scope.dragStart = function( event ) {
 					// Prevent default dragging of selected content
 					event.preventDefault();
+					x = scope.layout.style.left;
+					y = scope.layout.style.top;
 					startX = event.screenX - x;
 					startY = event.screenY - y;
-					$document.on('mousemove', mousemove);
-					$document.on('mouseup', mouseup);
+					$document.on('mousemove', scope.beingDragged);
+					$document.on('mouseup', scope.dragEnd);
 				};
 
-				function mousemove(event) {
+				scope.beingDragged = function() {
 					y = event.screenY - startY;
 					x = event.screenX - startX;
 
 					scope.$apply( function() {
-						scope.layout.style.top = y;
-						scope.layout.style.left = x;
+						scope.layout.style = {
+							top: y,
+							left: x
+						};
 					});
-				}
+				};
 
-				function mouseup() {
-					$document.off('mousemove', mousemove);
-					$document.off('mouseup', mouseup);
-				}
+				scope.dragEnd = function () {
+					$document.off('mousemove', scope.beingDragged);
+					$document.off('mouseup', scope.dragEnd);
+				};
 			}
 		};
 	})

@@ -189,7 +189,7 @@
 					woo: 'Paper',
 					layout: {
 						style: {
-							left: 300, // FIXME offsets not working between files
+							left: 240, // FIXME offsets not working between files
 							top: 130
 						}
 					}
@@ -197,16 +197,8 @@
 					woo: 'Transformation',
 					layout: {
 						style: {
-							left: 950,
+							left: 1060,
 							top: 130
-						}
-					}
-				}, {
-					woo: 'Paper',
-					layout: {
-						style: {
-							left: 300,
-							top: 530
 						}
 					}
 				}
