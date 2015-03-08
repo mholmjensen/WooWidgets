@@ -80,12 +80,41 @@ mark {
   position: absolute;
 }
 
+.woo-panel {
+  border-left: 0px solid @state-success-bg;
+  border-right: 1px solid @state-success-bg;
+  border-bottom: 1px solid @state-success-bg;
+  margin-bottom: 0px;
+  padding-bottom: 5px;
+  position: relative;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 .woo-area-header {
   cursor: pointer;
+  padding: 5px 5px;
+}
+
+
+.woo-area-body {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 0px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.woo-area-resize {
+  bottom: -20px;
+  right: -1px;
+  position: absolute;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }
 
 .woo-browser {
-  width: 180px;
 }
 
 
@@ -97,11 +126,9 @@ mark {
 }
 
 .woo-transformation {
-  width: 350px;
 }
 
 .woo-paper {
-  width: 750px;
 }
 
 
@@ -132,7 +159,9 @@ mark {
   background-color: rgba(235, 235, 235, 0.22);
 }
 
-
+.woo-browser-list-item {
+  padding: 5px 10px 5px 10px;
+}
 /* Browser */
 .woo-browser-file-list {
   list-style: none;
