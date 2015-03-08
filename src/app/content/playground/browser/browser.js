@@ -1,9 +1,7 @@
 (function () {
 	'use strict';
 
-	angular.module('playground.browser', ['playground', 'playground.config',
-																				'playground.browser.controller',
-																				'playground.browser-file.controller'])
+	angular.module('playground.browser', [])
 
 	.directive('wooBrowser', function() {
     return {
@@ -12,8 +10,15 @@
 				browser: '='
 			},
       templateUrl: 'app/content/playground/browser/browser.tpl.html',
-      controller: 'PlaygroundBrowserController',
-      controllerAs: 'playgroundBrowserCtrl'
+			link: function( scope ) {
+				scope.fileSelected = function( file ) {
+					scope.browser.currentFile = file;
+				};
+				scope.fileMoved = function( index, file ) {
+					scope.browser.files.splice( index, 1 );
+					scope.browser.currentFile = file;
+				};
+			}
     };
   })
 
@@ -24,8 +29,9 @@
 				file: '=file'
 			},
       templateUrl: 'app/content/playground/browser/browser-file.tpl.html',
-      controller: 'PlaygroundBrowserFileController',
-      controllerAs: 'playgroundBrowserFileCtrl'
+			link: function( scope ) {
+				
+			}
     };
   })
 	;

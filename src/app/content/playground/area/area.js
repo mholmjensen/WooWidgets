@@ -1,7 +1,8 @@
 (function () {
 	'use strict';
 
-	angular.module('playground.area', [ 'playground.toolbar', 'playground.browser', 'playground.transformation', 'playground.paper' ])
+	angular.module('playground.area', [ 'ui.bootstrap', 
+																			'playground.toolbar', 'playground.browser', 'playground.transformation', 'playground.paper' ])
 
 	// TODO Show active (last clicked) widget using panel-primary and panel-info
 
@@ -13,15 +14,13 @@
 			restrict: 'EA',
 			scope: {
 				area: '=',
-				name: '@',
 				panelType: '@',
 				layout: '=',
 				browser: '=',
-				currentFile: '=',
 				woo: '@'
 			},
 			templateUrl: 'app/content/playground/area/area.tpl.html',
-			link: function(scope, elem) {
+			link: function(scope) {
 				var startX = 0, startY = 0, x = 0, y = 0;
 
 				scope.dragStart = function( event ) {

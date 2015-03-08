@@ -73,14 +73,15 @@ mark {
 //   background: hsla(10, 50%, 50%, .8) !important;
 // }
 
-
+/* woo area */
 // TODO write the tree properly
 
 .woo-area {
+  // Makes coordinates relative to position in parent (currently top left of playground)
   position: absolute;
 }
 
-.woo-panel {
+.woo-area-panel {
   border-left: 0px solid @state-success-bg;
   border-right: 1px solid @state-success-bg;
   border-bottom: 1px solid @state-success-bg;
@@ -90,11 +91,15 @@ mark {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.woo-area-header {
+
+.woo-area-header-options {
+  margin-right: 6px;
   cursor: pointer;
-  padding: 5px 5px;
 }
 
+.woo-area-header-drag {
+  cursor: pointer;
+}
 
 .woo-area-body {
   width: 100%;
@@ -103,6 +108,7 @@ mark {
   overflow-x: hidden;
   overflow-y: scroll;
 }
+
 
 .woo-area-resize {
   bottom: -20px;
@@ -113,6 +119,9 @@ mark {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
+
+
+
 
 .woo-browser {
 }
