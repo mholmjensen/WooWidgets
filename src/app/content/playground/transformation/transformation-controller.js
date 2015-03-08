@@ -3,7 +3,7 @@
 
   angular.module('playground.transformation.controller', [])
 
-  .controller('PlaygroundTransformationController', function( $scope ) {
+  .controller('PlaygroundTransformationController', function( ) {
   });
 
 }());

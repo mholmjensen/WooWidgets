@@ -1,0 +1,33 @@
+<div class="panel panel-{{panelType}}"
+		 style="position: absolute; top: {{layout.style.top}}px; left: {{layout.style.left}}px;"
+		 >
+	<div class="panel-heading woo-area-header"
+			 ng-mousedown="dragStart( $event )">
+			 {{woo}}
+	</div>
+	<div class="panel-body"
+			 ng-switch="woo">
+		<div ng-switch-when="Browser"
+				class="woo-browser"
+				woo-browser
+				browser="browser">
+		</div>
+		<div ng-switch-when="Paper"
+				class="woo-paper"
+				woo-paper
+				transformation="browser.currentFile.payload.transformation"
+				candidate="browser.currentFile.payload.candidate"
+				paper="browser.currentFile.payload.paper">
+		</div>
+		<div ng-switch-when="Transformation"
+				 class="woo-transformation"
+				 woo-transformation
+				 transformation="browser.currentFile.payload.transformation"
+				 candidate="browser.currentFile.payload.candidate">
+		</div>
+		<div ng-switch-default
+				class="woo-missing">
+				Unknown woo: '{{woo}}'
+		</div>
+	</div>
+</div>
