@@ -1,8 +1,7 @@
 (function () {
 	'use strict';
 
-	angular.module('playground.area', [ 'ui.bootstrap', 
-																			'playground.toolbar', 'playground.browser', 'playground.transformation', 'playground.paper' ])
+	angular.module('playground.area', [ 'playground.toolbar', 'playground.browser', 'playground.transformation', 'playground.paper' ])
 
 	// TODO Show active (last clicked) widget using panel-primary and panel-info
 

@@ -11,29 +11,17 @@
 			},
       templateUrl: 'app/content/playground/browser/browser.tpl.html',
 			link: function( scope ) {
-				scope.fileSelected = function( file ) {
+				scope.fileSelected = function( event, file ) {
 					scope.browser.currentFile = file;
+					scope.selectedFile = file;
 				};
-				scope.fileMoved = function( index, file ) {
-					scope.browser.files.splice( index, 1 );
+				scope.fileMoved = function( event, index, file ) {
+					var remfile = scope.browser.files.splice( index, 1 );
 					scope.browser.currentFile = file;
+					scope.selectedFile = file;
 				};
 			}
     };
   })
-
-	.directive('wooBrowserFile', function() {
-    return {
-      restrict: 'EA',
-      scope: {
-				file: '=file'
-			},
-      templateUrl: 'app/content/playground/browser/browser-file.tpl.html',
-			link: function( scope ) {
-				
-			}
-    };
-  })
-	;
 
 }());
