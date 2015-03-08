@@ -118,7 +118,7 @@ Salg';
 								left: 740,
 								top: 15,
 								width: 800,
-								height: 575
+								height: 475
 							}
 						}
 					}, {
@@ -128,7 +128,7 @@ Salg';
 								left: 300,
 								top: 15,
 								width: 390,
-								height: 270
+								height: 210
 							}
 						}
 					}
@@ -142,10 +142,10 @@ Salg';
 						woo: 'Paper',
 						layout: {
 							style: {
-								left: 270, // FIXME offsets not working between files
+								left: 290,
 								top: 15,
-								width: 200,
-								height: 575
+								width: 400,
+								height: 150
 							}
 						}
 					},
@@ -153,10 +153,10 @@ Salg';
 						woo: 'Transformation',
 						layout: {
 							style: {
-								left: 1075,
+								left: 725,
 								top: 15,
-								width: 200,
-								height: 290
+								width: 600,
+								height: 150
 							}
 						}
 					}
@@ -201,7 +201,9 @@ Salg';
 				layout: {
 					style: {
 						left: 40,
-						top: 15
+						top: 15,
+						width: 200,
+						height: 130
 					}
 				},
 				files: files,

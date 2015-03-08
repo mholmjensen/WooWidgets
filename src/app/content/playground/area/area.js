@@ -20,8 +20,8 @@
 				currentFile: '=',
 				woo: '@'
 			},
-			templateUrl: 'app/content/playground/area.tpl.html',
-			link: function(scope) {
+			templateUrl: 'app/content/playground/area/area.tpl.html',
+			link: function(scope, elem) {
 				var startX = 0, startY = 0, x = 0, y = 0;
 
 				scope.dragStart = function( event ) {
@@ -47,12 +47,11 @@
 				};
 
 
-				scope.startWidth = scope.layout.style.width;
-				scope.startHeight = scope.layout.style.height;
 				scope.resizeStart = function( event ) {
 					if ( event.which === 1 ) {
 						event.preventDefault();
-						console.log(event);
+						scope.startWidth = scope.layout.style.width;
+						scope.startHeight = scope.layout.style.height;
 						startX = event.screenX;
 						startY = event.screenY;
 						$document.on('mousemove', scope.beingResized);
@@ -67,10 +66,14 @@
 					scope.$apply( function() {
 						scope.layout.style.width = scope.startWidth + x;
 						scope.layout.style.height = scope.startHeight + y;
+						scope.borderWidth = '3';
 					});
 				};
 
 				scope.resizeEnd = function () {
+					scope.$apply( function() {
+						scope.borderWidth = '';
+					});
 					$document.off('mousemove', scope.beingResized);
 					$document.off('mouseup', scope.resizeEnd);
 				};
