@@ -24,34 +24,58 @@
 			link: function(scope) {
 				var startX = 0, startY = 0, x = 0, y = 0;
 
-
 				scope.dragStart = function( event ) {
-					// Prevent default dragging of selected content
-					event.preventDefault();
-					x = scope.layout.style.left;
-					y = scope.layout.style.top;
-					startX = event.screenX - x;
-					startY = event.screenY - y;
-					$document.on('mousemove', scope.beingDragged);
-					$document.on('mouseup', scope.dragEnd);
+					if ( event.which === 1 ) {
+						event.preventDefault();
+						startX = event.screenX - scope.layout.style.left;
+						startY = event.screenY - scope.layout.style.top;
+						$document.on('mousemove', scope.beingDragged);
+						$document.on('mouseup', scope.dragEnd);
+					}
 				};
 
 				scope.beingDragged = function() {
-					y = event.screenY - startY;
-					x = event.screenX - startX;
-
 					scope.$apply( function() {
-						scope.layout.style = {
-							top: y,
-							left: x
-						};
-					});
+						scope.layout.style.left = event.screenX - startX;
+						scope.layout.style.top = event.screenY - startY;
+					}	);
 				};
 
 				scope.dragEnd = function () {
 					$document.off('mousemove', scope.beingDragged);
 					$document.off('mouseup', scope.dragEnd);
 				};
+
+
+				scope.startWidth = scope.layout.style.width;
+				scope.startHeight = scope.layout.style.height;
+				scope.resizeStart = function( event ) {
+					if ( event.which === 1 ) {
+						event.preventDefault();
+						console.log(event);
+						startX = event.screenX;
+						startY = event.screenY;
+						$document.on('mousemove', scope.beingResized);
+						$document.on('mouseup', scope.resizeEnd);
+					}
+				};
+
+				scope.beingResized = function() {
+					y = event.screenY - startY;
+					x = event.screenX - startX;
+
+					scope.$apply( function() {
+						scope.layout.style.width = scope.startWidth + x;
+						scope.layout.style.height = scope.startHeight + y;
+					});
+				};
+
+				scope.resizeEnd = function () {
+					$document.off('mousemove', scope.beingResized);
+					$document.off('mouseup', scope.resizeEnd);
+				};
+
+
 			}
 		};
 	})

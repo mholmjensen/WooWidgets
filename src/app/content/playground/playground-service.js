@@ -116,7 +116,9 @@ Salg';
 						layout: {
 							style: {
 								left: 740,
-								top: 15
+								top: 15,
+								width: 800,
+								height: 575
 							}
 						}
 					}, {
@@ -124,7 +126,9 @@ Salg';
 						layout: {
 							style: {
 								left: 300,
-								top: 15
+								top: 15,
+								width: 390,
+								height: 270
 							}
 						}
 					}
@@ -139,7 +143,9 @@ Salg';
 						layout: {
 							style: {
 								left: 270, // FIXME offsets not working between files
-								top: 15
+								top: 15,
+								width: 200,
+								height: 575
 							}
 						}
 					},
@@ -148,7 +154,9 @@ Salg';
 						layout: {
 							style: {
 								left: 1075,
-								top: 15
+								top: 15,
+								width: 200,
+								height: 290
 							}
 						}
 					}
