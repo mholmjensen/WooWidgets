@@ -1,0 +1,92 @@
+@import "../vendor/animate.css/animate.css";
+.logo {
+  max-width: 90%;
+  margin: 20px;
+}
+.navbar {
+  border: 0;
+}
+mark {
+  padding: 0px;
+  background-color: #ffa500;
+}
+.alert-attention {
+  color: #31708f;
+  background-color: #ffa500;
+  border-color: #ffa500;
+}
+.btn-suggested {
+  color: #333;
+  background-color: #0adc82;
+  border-color: #0adc82;
+}
+/* woo classes */
+.woo-content {
+  margin-top: 59px;
+}
+.woo-area {
+  position: absolute;
+}
+.woo-area-header {
+  cursor: pointer;
+}
+.woo-browser {
+  width: 180px;
+}
+/*  */
+.woo-toolbar {
+  left: 145px;
+  top: 72px;
+  position: absolute;
+}
+.woo-transformation {
+  width: 350px;
+}
+.woo-paper {
+  width: 750px;
+}
+/* Custom Widgets Styling */
+.woo-line {
+  display: block;
+}
+.woo-line-empty {
+  display: block;
+  height: 18px;
+}
+.woo-btn-paper-mode {
+  position: absolute;
+  right: 30px;
+}
+.woo-paper-textarea {
+  padding: 10px 20px;
+  border-left: 5px solid #eee;
+  margin-bottom: 10px;
+}
+.woo-paper-blockquote {
+  background-color: rgba(235, 235, 235, 0.22);
+}
+/* Browser */
+.woo-browser-file-list {
+  list-style: none;
+}
+/**
+ * The dndDraggingSource class will be applied to
+ * the source element of a drag operation. It makes
+ * sense to hide it to give the user the feeling
+ * that he's actually moving it.
+ */
+.woo-browser-file-list .dndDraggingSource {
+  display: none;
+}
+/**
+ * An element with .dndPlaceholder class will be
+ * added to the dnd-list while the user is dragging
+ * over it.
+ */
+.woo-browser-file-list .dndPlaceholder {
+  display: block;
+  background-color: #eee;
+  min-height: 42px;
+}
+
+/*# sourceMappingURL=maps/style.css.map */
