@@ -115,7 +115,7 @@ Salg';
 						woo: 'Paper',
 						layout: {
 							style: {
-								left: 740,
+								left: 790,
 								top: 15,
 								width: 800,
 								height: 475
@@ -125,7 +125,7 @@ Salg';
 						woo: 'Transformation',
 						layout: {
 							style: {
-								left: 300,
+								left: 350,
 								top: 15,
 								width: 390,
 								height: 210
@@ -142,7 +142,7 @@ Salg';
 						woo: 'Paper',
 						layout: {
 							style: {
-								left: 290,
+								left: 330,
 								top: 15,
 								width: 400,
 								height: 150
@@ -153,7 +153,7 @@ Salg';
 						woo: 'Transformation',
 						layout: {
 							style: {
-								left: 725,
+								left: 785,
 								top: 15,
 								width: 600,
 								height: 150
@@ -202,7 +202,7 @@ Salg';
 					style: {
 						left: 40,
 						top: 15,
-						width: 200,
+						width: 260,
 						height: 130
 					}
 				},

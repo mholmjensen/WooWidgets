@@ -13,15 +13,13 @@
 			restrict: 'EA',
 			scope: {
 				area: '=',
-				name: '@',
 				panelType: '@',
 				layout: '=',
 				browser: '=',
-				currentFile: '=',
 				woo: '@'
 			},
 			templateUrl: 'app/content/playground/area/area.tpl.html',
-			link: function(scope, elem) {
+			link: function(scope) {
 				var startX = 0, startY = 0, x = 0, y = 0;
 
 				scope.dragStart = function( event ) {

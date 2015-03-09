@@ -14,7 +14,7 @@
 			templateUrl: 'app/content/playground/playground.tpl.html',
       controller: 'PlaygroundController',
       controllerAs: 'playgroundCtrl',
-			link: function( scope, elem ) {
+			link: function( scope ) {
 				scope.browser = PlaygroundService.browser;
 			}
 		};
