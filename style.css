@@ -24,10 +24,11 @@ mark {
 .woo-content {
   margin-top: 59px;
 }
+/* woo area */
 .woo-area {
   position: absolute;
 }
-.woo-panel {
+.woo-area-panel {
   border-left: 0px solid #dff0d8;
   border-right: 1px solid #dff0d8;
   border-bottom: 1px solid #dff0d8;
@@ -36,9 +37,12 @@ mark {
   position: relative;
   box-shadow: none;
 }
-.woo-area-header {
+.woo-area-header-options {
+  margin-right: 6px;
   cursor: pointer;
-  padding: 5px 5px;
+}
+.woo-area-header-drag {
+  cursor: pointer;
 }
 .woo-area-body {
   width: 100%;
@@ -47,12 +51,25 @@ mark {
   overflow-x: hidden;
   overflow-y: scroll;
 }
-.woo-area-resize {
+.woo-area-footer-resize {
   bottom: -20px;
   right: -1px;
   position: absolute;
   cursor: pointer;
   border-radius: 4px;
+}
+/* Browser */
+.woo-browser-list-item {
+  padding: 5px 10px 5px 10px;
+}
+.woo-browser-file-list {
+  list-style: none;
+}
+.woo-browser-file-rearrange {
+  margin-right: 5px;
+}
+.woo-browser-file-information {
+  margin-left: 5px;
 }
 /*  */
 .woo-toolbar {
@@ -79,13 +96,6 @@ mark {
 }
 .woo-paper-blockquote {
   background-color: rgba(235, 235, 235, 0.22);
-}
-.woo-browser-list-item {
-  padding: 5px 10px 5px 10px;
-}
-/* Browser */
-.woo-browser-file-list {
-  list-style: none;
 }
 /**
  * The dndDraggingSource class will be applied to

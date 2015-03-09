@@ -2,7 +2,7 @@
 
 (function () {
 
-	angular.module('woo', ['templates', 'ui.router', 'dndLists',
+	angular.module('woo', ['templates', 'ui.router', 'dndLists', 'ui.bootstrap', 
 												 'woo.config' ])
 
 	.run(['$rootScope', function($rootScope) {
@@ -99,10 +99,8 @@
 
   angular.module('playground.controller', [ 'playground.service'] )
 
-  .controller('PlaygroundController', ['$scope', function( $scope ) {
-    // So far no need for a controller, but might be the proper place to set scope 
-
-  }]);
+  .controller('PlaygroundController', function( ) {
+  });
 
 }());
 
@@ -223,7 +221,7 @@ Salg';
 						woo: 'Paper',
 						layout: {
 							style: {
-								left: 740,
+								left: 790,
 								top: 15,
 								width: 800,
 								height: 475
@@ -233,7 +231,7 @@ Salg';
 						woo: 'Transformation',
 						layout: {
 							style: {
-								left: 300,
+								left: 350,
 								top: 15,
 								width: 390,
 								height: 210
@@ -250,7 +248,7 @@ Salg';
 						woo: 'Paper',
 						layout: {
 							style: {
-								left: 290,
+								left: 330,
 								top: 15,
 								width: 400,
 								height: 150
@@ -261,7 +259,7 @@ Salg';
 						woo: 'Transformation',
 						layout: {
 							style: {
-								left: 725,
+								left: 785,
 								top: 15,
 								width: 600,
 								height: 150
@@ -310,7 +308,7 @@ Salg';
 					style: {
 						left: 40,
 						top: 15,
-						width: 200,
+						width: 260,
 						height: 130
 					}
 				},
@@ -342,7 +340,7 @@ Salg';
 			templateUrl: 'app/content/playground/playground.tpl.html',
       controller: 'PlaygroundController',
       controllerAs: 'playgroundCtrl',
-			link: function( scope, elem ) {
+			link: function( scope ) {
 				scope.browser = PlaygroundService.browser;
 			}
 		};
@@ -367,15 +365,13 @@ Salg';
 			restrict: 'EA',
 			scope: {
 				area: '=',
-				name: '@',
 				panelType: '@',
 				layout: '=',
 				browser: '=',
-				currentFile: '=',
 				woo: '@'
 			},
 			templateUrl: 'app/content/playground/area/area.tpl.html',
-			link: function(scope, elem) {
+			link: function(scope) {
 				var startX = 0, startY = 0, x = 0, y = 0;
 
 				scope.dragStart = function( event ) {
@@ -441,43 +437,9 @@ Salg';
 }());
 
 (function () {
-  'use strict';
-
-  angular.module('playground.browser.controller', [])
-
-  .controller('PlaygroundBrowserController', ['$scope', function( $scope ) {
-    var self = this;
-
-    this.list = {
-      moved: function(event, index, file) {
-        //$scope.files.splice(index, 1);
-        //TODO drag and drop should work
-      },
-      selected: function(file) {
-        $scope.browser.currentFile = file;
-      }
-    };
-
-  }]);
-
-}());
-
-(function () {
-  'use strict';
-
-  angular.module('playground.browser-file.controller', ['playground.browser'])
-
-  .controller('PlaygroundBrowserFileController', function() {
-  });
-
-}());
-
-(function () {
 	'use strict';
 
-	angular.module('playground.browser', ['playground', 'playground.config',
-																				'playground.browser.controller',
-																				'playground.browser-file.controller'])
+	angular.module('playground.browser', [])
 
 	.directive('wooBrowser', function() {
     return {
@@ -486,22 +448,28 @@ Salg';
 				browser: '='
 			},
       templateUrl: 'app/content/playground/browser/browser.tpl.html',
-      controller: 'PlaygroundBrowserController',
-      controllerAs: 'playgroundBrowserCtrl'
+			link: function( scope ) {
+				scope.editingName = false;
+				scope.fileSelected = function( event, file ) {
+					// Not very spectacular stuff this here
+					var candidate = file;
+					angular.forEach( scope.browser.files, function( otherFile, key ) {
+						if ( file.name === otherFile.name ) { //FIXME: Messes up on same names, and generally risky unless in tree
+							candidate = otherFile;
+							console.log('found' + file.name );
+							return false;
+						}
+					});
+					scope.browser.currentFile = candidate;
+				};
+				scope.fileMoved = function( event, index, file ) {
+					var remfile = scope.browser.files.splice( index, 1 );
+					scope.fileSelected( event, remfile[0] );
+				};
+			}
     };
   })
 
-	.directive('wooBrowserFile', function() {
-    return {
-      restrict: 'EA',
-      scope: {
-				file: '=file'
-			},
-      templateUrl: 'app/content/playground/browser/browser-file.tpl.html',
-      controller: 'PlaygroundBrowserFileController',
-      controllerAs: 'playgroundBrowserFileCtrl'
-    };
-  })
 	;
 
 }());
