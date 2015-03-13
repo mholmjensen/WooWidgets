@@ -11,21 +11,49 @@
  <br>
  <br> -->
 
-<!-- make browser into a dock -->
-<div woo-area class="woo-area"
- 		 panel-type="success"
-		 woo="Browser"
-		 browser="browser"
-     layout="browser.layout">
+<!-- TODO make browser into a dock -->
+<woo-area name="Dock Browser (in time)" layout="browser.layout">
+  <woo-browser
+    class="woo-browser"
+    files="browser.files"
+    current-file="browser.currentFile"
+    browser="browser">
+  </woo-browser>
+</woo-area>
+
+<div ng-repeat="area in browser.currentFile.woo.areas track by $index"
+     ng-switch="area.woo">
+  <woo-area name="{{area.woo}}" layout="area.layout">
+    <div ng-switch-when="Browser">
+        <woo-browser
+          class="woo-browser"
+          files="browser.files"
+          currentFile="browser.currentFile"
+          browser="browser">
+        </woo-browser>
+    </div>
+    <div ng-switch-when="Paper">
+        <woo-paper
+          class="woo-paper"
+          transformation="browser.currentFile.payload.transformation"
+          candidate="browser.currentFile.payload.candidate"
+          paper="browser.currentFile.payload.paper">
+        </woo-paper>
+    </div>
+
+    <div ng-switch-when="Transformation">
+        <woo-transformation
+          class="woo-transformation"
+          transformation="browser.currentFile.payload.transformation"
+          candidate="browser.currentFile.payload.candidate">
+        </woo-transformation>
+    </div>
+    <div ng-switch-default>
+        Unknown woo: '{{woo}}'
+    </div>
+  </woo-area>
 </div>
 
-<div ng-repeat="area in browser.currentFile.woo.areas track by $index">
-	<div woo-area class="woo-area"
-			 panel-type="success"
-			 woo="{{area.woo}}"
-			 area="area"
-       layout="area.layout"
-			 browser="browser">
-	</div>
-  <!-- {{browser.currentFile.name}}: {{area.woo}}, {{area.layout}} -->
-</div>
+<woo-area name="In playground scope" layout="{style: {top: 300, left: 100, width: 200, height: 100}}">
+  Click debug
+</woo-area>

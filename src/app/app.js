@@ -2,7 +2,7 @@
 
 (function () {
 
-	angular.module('woo', ['templates', 'ui.router', 'dndLists', 'ui.bootstrap', 
+	angular.module('woo', ['templates', 'ui.router', 'dndLists', 'ui.bootstrap', 'jsonFormatter',
 												 'woo.config' ])
 
 	.run(function($rootScope) {

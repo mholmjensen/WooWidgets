@@ -1,0 +1,15 @@
+<div class="woo-debug-panel small" ng-show="inspector.showPanel" style="position: absolute; width: 100%;">
+	<div class="btn-group" ng-repeat="dw in inspector.dataToWatch | orderBy: 'name'">
+		<label class="btn btn-default btn-xs" ng-model="dw.show" btn-checkbox>
+				<span>
+					{{dw.name}}
+					<span class="fa fa-eye" ng-show="dw.show"></span>
+				</span>
+		</label>
+	</div>
+
+	<div ng-repeat="dw in inspector.dataToWatch | orderBy: 'name'" ng-show="dw.show">
+		<h5 style="margin-left: 15px;">{{dw.name}}</h5>
+		<json-formatter json="dw.ref" open="2">
+	</div>
+</div>

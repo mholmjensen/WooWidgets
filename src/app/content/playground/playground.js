@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular.module('playground', [ 'playground.controller', 'playground.service',
-																 'playground.area',
+																 'playground.area', 'playground.debug',
 																 'playground.toolbar', 'playground.browser', 'playground.transformation', 'playground.paper' ])
 
 	// TODO: Floating widgets

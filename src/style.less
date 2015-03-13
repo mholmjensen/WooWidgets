@@ -39,6 +39,9 @@ mark {
 }
 
 
+.nav > li > a {
+  padding: 2px 4px;
+}
 
 
 /* woo classes */
@@ -47,6 +50,7 @@ mark {
 }
 
 .woo-playground {
+  position: relative;
 }
 
 
@@ -91,6 +95,24 @@ mark {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+
+.woo-debug-panel {
+  border-left: 0px solid @state-success-bg;
+  border-right: 1px solid @state-success-bg;
+  border-bottom: 1px solid @state-success-bg;
+  margin-bottom: 0px;
+  padding-bottom: 5px;
+  position: absolute;
+  z-index: 99999;
+  background-color: rgba(200, 200, 200, 0.9);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  width: 90%;
+}
+
+
+
+
 
 .woo-area-header-options {
   margin-right: 6px;

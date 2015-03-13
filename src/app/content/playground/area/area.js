@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	angular.module('playground.area', [ 'playground.toolbar', 'playground.browser', 'playground.transformation', 'playground.paper' ])
+	angular.module('playground.area', [])
 
 	// TODO Show active (last clicked) widget using panel-primary and panel-info
 
@@ -12,14 +12,19 @@
 		return {
 			restrict: 'EA',
 			scope: {
-				area: '=',
-				panelType: '@',
-				layout: '=',
-				browser: '=',
-				woo: '@'
+				name: '@',
+				layout: '='
 			},
+			// scope: {
+			// 	area: '=',
+			// 	panelType: '@',
+			// 	layout: '=',
+			// 	browser: '=',
+			// 	woo: '@'
+			// },
+			transclude: true,
 			templateUrl: 'app/content/playground/area/area.tpl.html',
-			link: function(scope) {
+			link: function( scope, elem, attr ) {
 				var startX = 0, startY = 0, x = 0, y = 0;
 
 				scope.dragStart = function( event ) {
@@ -80,6 +85,16 @@
 			}
 		};
 	})
+
+	.directive('wooAreaMenu', function( ) {
+		return {
+			restrict: 'E',
+			scope: true,
+			link: function( scope ) {
+			}
+		};
+	})
+
 	;
 
 }());
