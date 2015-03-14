@@ -21,8 +21,8 @@
 	      		<span class="fa fa-times"></span>
 					</div>
 				</span>
-				<woo-inspector-toggle></woo-inspector-toggle>
-				<woo-inspector on-top></woo-inspector>
+				<woo-debug-inspector-toggle inline></woo-debug-inspector-toggle>
+				<woo-debug-inspector></woo-debug-inspector>
 			</div>
 
 		 {{name}}
@@ -36,7 +36,7 @@
 						  height: {{layout.style.height}}px;"
 			 >
 		<div ng-transclude></div>
-
+<!-- Should be made into a directive, it can apply to any element -->
 		<div class="woo-area-footer-resize"
 				ng-mousedown="resizeStart( $event )">
 			<span class="fa fa-expand"></span>

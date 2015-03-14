@@ -1,38 +1,42 @@
-<div class="input-group input-group-sm" ng-repeat="replacement in transformation.replacements">
-  <div class="input-group-btn">
-    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-      <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-    </button>
-    <ul class="dropdown-menu" role="menu">
-      <li><a href="#">Textarea</a></li>
-      <li class="divider"></li>
-      <li><a href="#">Markdown</a></li>
-    </ul>
-  </div>
-  <span class="input-group-addon text-left" style="width: 120px; text-align: left;"
-        ng-click="transformation.highlight = replacement">
-        {{replacement.from}}
-  </span>
-  <input type="text" class="form-control" aria-label="..."
-          ng-model="replacement.to"
-          ng-click="transformation.highlight = replacement"
-          >
-  <div class="input-group-btn">
-    <button type="button" class="btn btn-default btn-sm" aria-label="Left Align"
-            ng-model="replacement.enabled"
-            ng-click="replacement.enabled = !replacement.enabled">
-      <span class="glyphicon glyphicon-ok" aria-hidden="true"
-            ng-show="replacement.enabled"></span>
-      <span class="glyphicon glyphicon-remove" aria-hidden="true"
-            ng-show="!replacement.enabled"></span>
-    </button>
-  </div>
+<div woo-debug style="position: relative">
+  <div woo-debug-inspector></div>
+  <div woo-debug-inspector-toggle></div>
+  <div class="input-group input-group-sm" ng-repeat="replacement in transformation.replacements">
+    <div class="input-group-btn">
+      <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Textarea</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Markdown</a></li>
+      </ul>
+    </div>
+    <span class="input-group-addon text-left" style="width: 120px; text-align: left;"
+          ng-click="transformation.highlight = replacement">
+          {{replacement.from}}
+    </span>
+    <input type="text" class="form-control" aria-label="..."
+            ng-model="replacement.to"
+            ng-click="transformation.highlight = replacement"
+            >
+    <div class="input-group-btn">
+      <button type="button" class="btn btn-default btn-sm" aria-label="Left Align"
+              ng-model="replacement.enabled"
+              ng-click="replacement.enabled = !replacement.enabled">
+        <span class="glyphicon glyphicon-ok" aria-hidden="true"
+              ng-show="replacement.enabled"></span>
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"
+              ng-show="!replacement.enabled"></span>
+      </button>
+    </div>
 
-</div>
-<div style="height: 10px">
-</div>
-<div class="woo-candidate"
-     woo-candidate
-     candidate="candidate"
-     transformation="transformation">
+  </div>
+  <div style="height: 10px">
+  </div>
+  <div class="woo-candidate"
+       woo-candidate
+       candidate="candidate"
+       transformation="transformation">
+  </div>
 </div>

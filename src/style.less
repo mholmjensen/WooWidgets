@@ -96,29 +96,39 @@ mark {
   box-shadow: none;
 }
 
-.woo-debug-panel {
-  border-left: 0px solid @state-success-bg;
-  border-right: 1px solid @state-success-bg;
-  border-bottom: 1px solid @state-success-bg;
-  margin-bottom: 0px;
-  padding-bottom: 5px;
+.woo-debug-inspector {
+  background-color: rgba(200, 200, 200, 0.8); // TODO find bootstrap color variables
   position: absolute;
-  z-index: 1500;
-  background-color: rgba(200, 200, 200, 0.9);
+  z-index: 1005;
   -webkit-box-shadow: none;
   box-shadow: none;
   width: 90%;
   min-width: 200px;
   top: 20px;
 }
+// TODO wrap scope for which data is viewer in color or shadow
 
-.woo-debug-on-top {
+.woo-debug-inspector-toggle {
+  margin-bottom: 0px;
+  background-color: rgba(200, 200, 200, 0.8); // TODO find bootstrap color variables
   position: absolute;
-  z-index: 1500;
-  background-color: rgba(200, 200, 200, 0.9);
-  left: -5px;
+  z-index: 995;
+  left: -10px;
   top: -5px;
 }
+
+.inline {
+  position: relative;
+  z-index: 0;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+}
+
+
+
+
 
 .woo-area-header-options {
   margin-right: 6px;
