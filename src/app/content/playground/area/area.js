@@ -1,25 +1,24 @@
 (function () {
 	'use strict';
 
-	angular.module('playground.area', [ 'playground.toolbar', 'playground.browser', 'playground.transformation', 'playground.paper' ])
+	angular.module('playground.area', [])
 
 	// TODO Show active (last clicked) widget using panel-primary and panel-info
 
 	// TODO snap areas to percentages using relative coords
 	// TODO dragable (or lockable) on/off in panel top
 
-	.directive('wooArea', function( $document ) {
+	.directive('wooArea', function( $document, $log, $swipe ) {
 		return {
 			restrict: 'EA',
 			scope: {
-				area: '=',
-				panelType: '@',
-				layout: '=',
-				browser: '=',
-				woo: '@'
+				name: '@',
+				layout: '='
 			},
+			transclude: true,
 			templateUrl: 'app/content/playground/area/area.tpl.html',
-			link: function(scope) {
+			link: function( scope ) {
+				//TODO: $log.debug( $swipe );
 				var startX = 0, startY = 0, x = 0, y = 0;
 
 				scope.dragStart = function( event ) {
@@ -80,6 +79,14 @@
 			}
 		};
 	})
+
+	.directive('wooAreaMenu', function( ) {
+		return {
+			restrict: 'E',
+			scope: true
+		};
+	})
+
 	;
 
 }());
