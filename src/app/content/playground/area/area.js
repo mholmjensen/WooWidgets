@@ -24,7 +24,7 @@
 			// },
 			transclude: true,
 			templateUrl: 'app/content/playground/area/area.tpl.html',
-			link: function( scope, elem, attr ) {
+			link: function( scope) {
 				var startX = 0, startY = 0, x = 0, y = 0;
 
 				scope.dragStart = function( event ) {
@@ -89,9 +89,7 @@
 	.directive('wooAreaMenu', function( ) {
 		return {
 			restrict: 'E',
-			scope: true,
-			link: function( scope ) {
-			}
+			scope: true
 		};
 	})
 

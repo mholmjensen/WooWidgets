@@ -1,4 +1,6 @@
-
-<label class="btn btn-default btn-xs" ng-model="inspector.showPanel" btn-checkbox>
+<label class="btn btn-default btn-xs woo-debug-on-top" ng-model="inspector.showPanel" btn-checkbox ng-if="onTop">
+	<span class="fa fa-search"></span>
+</label>
+<label class="btn btn-default btn-xs" ng-model="inspector.showPanel" btn-checkbox ng-if="!onTop">
 	<span class="fa fa-search"></span>
 </label>

@@ -1,8 +1,10 @@
 <div woo-debug>
-  <span woo-inspector-toggle></span>
-  <div woo-inspector></div>
-  <ul class="list-group woo-browser-file-list"
-      dnd-list="files">
+  <div woo-inspector>
+  </div>
+  <div>
+    <span woo-inspector-toggle on-top></span>
+    <ul class="list-group woo-browser-file-list"
+        dnd-list="files">
       <li ng-repeat="file in files"
           class="list-group-item woo-browser-list-item"
           >
@@ -14,7 +16,7 @@
                file="file"
                ng-class="">
             {{$index + 1}})
-            <!-- <span ng-show="$index === 0" class="woo-browser-file-rearrange">
+          <!-- <span ng-show="$index === 0" class="woo-browser-file-rearrange">
              <span class="fa fa-long-arrow-down"></span>
             </span>
             <span ng-show="$index > 0 && $index < browser.files.length - 1" class="woo-browser-file-rearrange">
@@ -40,6 +42,8 @@
               </span>
             <div>
           </div>
-      </li>
-  </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

@@ -103,16 +103,22 @@ mark {
   margin-bottom: 0px;
   padding-bottom: 5px;
   position: absolute;
-  z-index: 99999;
+  z-index: 1500;
   background-color: rgba(200, 200, 200, 0.9);
   -webkit-box-shadow: none;
   box-shadow: none;
   width: 90%;
+  min-width: 200px;
+  top: 20px;
 }
 
-
-
-
+.woo-debug-on-top {
+  position: absolute;
+  z-index: 1500;
+  background-color: rgba(200, 200, 200, 0.9);
+  left: -5px;
+  top: -5px;
+}
 
 .woo-area-header-options {
   margin-right: 6px;
@@ -146,6 +152,7 @@ mark {
 
 /* Browser */
 .woo-browser {
+  position: relative;
 }
 
 .woo-browser-list-item {

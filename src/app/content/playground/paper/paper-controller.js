@@ -3,7 +3,7 @@
 
   angular.module('playground.paper.controller', [])
 
-  .controller('PlaygroundPaperController', function($scope) {
+  .controller('PlaygroundPaperController', function() {
 
     this.lineClicked = function( number ) {
       console.log('lc: ' + number );

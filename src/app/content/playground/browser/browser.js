@@ -16,7 +16,7 @@
 				scope.fileSelected = function( event, file ) {
 					// Not very spectacular stuff this here
 					var candidate = file;
-					angular.forEach( scope.files, function( otherFile, key ) {
+					angular.forEach( scope.files, function( otherFile ) {
 						if ( file.name === otherFile.name ) { //FIXME: Messes up on same names, and generally risky unless in tree
 							candidate = otherFile;
 							console.log('found' + file.name );
@@ -25,7 +25,7 @@
 					});
 					scope.currentFile = candidate;
 				};
-				scope.fileMoved = function( event, index, file ) {
+				scope.fileMoved = function( event, index ) {
 					var remfile = scope.files.splice( index, 1 );
 					scope.fileSelected( event, remfile[0] );
 				};
