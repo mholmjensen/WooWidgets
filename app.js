@@ -2,7 +2,7 @@
 
 (function () {
 
-	angular.module('woo', ['templates', 'ui.router', 'dndLists', 'ui.bootstrap', 
+	angular.module('woo', ['templates', 'ui.router', 'dndLists', 'ui.bootstrap', 'jsonFormatter', 'ngTouch',
 												 'woo.config' ])
 
 	.run(['$rootScope', function($rootScope) {
@@ -31,11 +31,11 @@
 	}])
 
 
-	.run(['$rootScope', function($rootScope) {
-		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState) {
-			console.log(fromState.name + ' -> ' + toState.name);
-		});
-	}])
+	// .run(function($rootScope) {
+	// 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState) {
+	// 		console.log(fromState.name + ' -> ' + toState.name);
+	// 	});
+	// })
 
 	;
 
@@ -50,7 +50,6 @@
     return {
       restrict: 'EA',
       scope: true,
-			transclude: true,
       templateUrl: 'app/content/content.tpl.html'
     };
   })
@@ -328,20 +327,24 @@ Salg';
 	'use strict';
 
 	angular.module('playground', [ 'playground.controller', 'playground.service',
-																 'playground.area',
+																 'playground.area', 'playground.debug',
 																 'playground.toolbar', 'playground.browser', 'playground.transformation', 'playground.paper' ])
 
 	// TODO: Floating widgets
 	// TODO Show active (last clicked) widget using panel-primary and panel-info
 	.directive('wooPlayground', ['PlaygroundService', function( PlaygroundService ) {
+		var postLink = function( scope ) {
+			scope.browser = PlaygroundService.browser;
+		};
 		return {
 			restrict: 'EA',
 			scope: true,
 			templateUrl: 'app/content/playground/playground.tpl.html',
       controller: 'PlaygroundController',
       controllerAs: 'playgroundCtrl',
-			link: function( scope ) {
-				scope.browser = PlaygroundService.browser;
+			compile: function(tElement, tAttrs) {
+				tAttrs.$addClass( 'woo-playground' );
+				return postLink;
 			}
 		};
 	}])
@@ -353,25 +356,24 @@ Salg';
 (function () {
 	'use strict';
 
-	angular.module('playground.area', [ 'playground.toolbar', 'playground.browser', 'playground.transformation', 'playground.paper' ])
+	angular.module('playground.area', [])
 
 	// TODO Show active (last clicked) widget using panel-primary and panel-info
 
 	// TODO snap areas to percentages using relative coords
 	// TODO dragable (or lockable) on/off in panel top
 
-	.directive('wooArea', ['$document', function( $document ) {
+	.directive('wooArea', ['$document', '$log', '$swipe', function( $document, $log, $swipe ) {
 		return {
 			restrict: 'EA',
 			scope: {
-				area: '=',
-				panelType: '@',
-				layout: '=',
-				browser: '=',
-				woo: '@'
+				name: '@',
+				layout: '='
 			},
+			transclude: true,
 			templateUrl: 'app/content/playground/area/area.tpl.html',
-			link: function(scope) {
+			link: function( scope ) {
+				//TODO: $log.debug( $swipe );
 				var startX = 0, startY = 0, x = 0, y = 0;
 
 				scope.dragStart = function( event ) {
@@ -432,6 +434,14 @@ Salg';
 			}
 		};
 	}])
+
+	.directive('wooAreaMenu', function( ) {
+		return {
+			restrict: 'E',
+			scope: true
+		};
+	})
+
 	;
 
 }());
@@ -445,7 +455,8 @@ Salg';
     return {
       restrict: 'EA',
       scope: {
-				browser: '='
+				files: '=',
+				currentFile: '=' //TODO previously browser was sent here
 			},
       templateUrl: 'app/content/playground/browser/browser.tpl.html',
 			link: function( scope ) {
@@ -453,17 +464,17 @@ Salg';
 				scope.fileSelected = function( event, file ) {
 					// Not very spectacular stuff this here
 					var candidate = file;
-					angular.forEach( scope.browser.files, function( otherFile, key ) {
+					angular.forEach( scope.files, function( otherFile ) {
 						if ( file.name === otherFile.name ) { //FIXME: Messes up on same names, and generally risky unless in tree
 							candidate = otherFile;
 							console.log('found' + file.name );
 							return false;
 						}
 					});
-					scope.browser.currentFile = candidate;
+					scope.currentFile = candidate;
 				};
-				scope.fileMoved = function( event, index, file ) {
-					var remfile = scope.browser.files.splice( index, 1 );
+				scope.fileMoved = function( event, index ) {
+					var remfile = scope.files.splice( index, 1 );
 					scope.fileSelected( event, remfile[0] );
 				};
 			}
@@ -480,6 +491,7 @@ Salg';
   angular.module('playground.paper.controller', [])
 
   .controller('PlaygroundPaperController', function() {
+
     this.lineClicked = function( number ) {
       console.log('lc: ' + number );
     };
@@ -601,6 +613,60 @@ Salg';
 }());
 
 (function () {
+	'use strict';
+
+	angular.module('playground.debug', [ 'playground.debug.inspector' ])
+
+	// Set as attribute on element e
+	// Child elements e_c of this directive can be
+	// decorated with debug child directives
+	.directive('wooDebug', ['$log', function( $log ) {
+		var linker = function( scope, iElem, tAttrs ) {
+
+			var dataToWatch = [];
+			angular.forEach( scope, function(value,index) {
+				if( index.charAt(0) !== '$' ) {
+					dataToWatch.push( { name: index, ref: scope[index], show: true } );
+				}
+			});
+
+			scope.inspector = {
+				dataToWatch: dataToWatch,
+				showPanel: false
+			};
+
+			scope.highlight = {
+				level: 0
+			};
+
+			scope.$watch( 'highlight.level', function( newValue, oldValue ) {
+				tAttrs.$removeClass( 'debug-highlight-' + oldValue );
+				if( newValue > 0) {
+					tAttrs.$addClass( 'debug-highlight-' + newValue );
+				}
+				scope.highlight.level = newValue;
+			});
+
+		};
+
+		return {
+			restrict: 'A',
+			compile: function(tElement, tAttrs) {
+				tAttrs.$addClass( 'woo-debug' );
+				return {
+					pre: null,
+					post: linker
+				};
+			}
+		};
+	}])
+
+
+	;
+
+}());
+
+(function () {
   'use strict';
 
   angular.module('playground.toolbar.controller', [])
@@ -683,6 +749,9 @@ Salg';
 				transformation: '=',
 				candidate: '='
 			},
+			compile: function(tElement, tAttrs) {
+				tAttrs.$addClass( 'woo-transformation' );
+			},
       templateUrl: 'app/content/playground/transformation/transformation.tpl.html',
       controller: 'PlaygroundTransformationController',
       controllerAs: 'playgroundTransformationCtrl'
@@ -701,6 +770,48 @@ Salg';
       controllerAs: 'playgroundCandidateCtrl'
     };
   })
+	;
+
+}());
+
+(function () {
+	'use strict';
+
+	angular.module('playground.debug.inspector', [ ])
+
+	// Inherits scope of parent (TODO read up on scope: true)
+	.directive('wooDebugInspector', ['$log', function( $log ) {
+		return {
+			restrict: 'EA',
+			// require: '^wooDebug',
+			templateUrl: 'app/content/playground/debug/inspector/inspector.tpl.html',
+			link: function( scope, elem, attrs ) {
+				// $log.debug('inspector scope');
+				// $log.debug(scope.inspector);
+				attrs.$addClass( 'woo-debug-inspector' );
+				if ( angular.isDefined( attrs.$attr.inline ) ) { // TODO: Should be set directly as optional css class? bootstrap style?
+					attrs.$addClass( 'inspector added inline' );
+				}
+
+			}
+		};
+	}])
+
+	.directive('wooDebugInspectorToggle', ['$log', function( $log ) {
+		return {
+			restrict: 'EA',
+			templateUrl: 'app/content/playground/debug/inspector/inspector-toggle.tpl.html',
+			link: function( scope, elem, attrs ) {
+				// $log.debug('inspector toggle scope');
+				// $log.debug(scope.inspector);
+				attrs.$addClass( 'woo-debug-inspector-toggle' );
+				if ( angular.isDefined( attrs.$attr.inline ) ) {
+					// $log.log('toggle added inline');
+					attrs.$addClass( 'inline' );
+				}
+			}
+		};
+	}])
 	;
 
 }());

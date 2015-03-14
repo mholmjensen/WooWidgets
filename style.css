@@ -1,8 +1,4 @@
 @import "../vendor/animate.css/animate.css";
-.logo {
-  max-width: 90%;
-  margin: 20px;
-}
 .navbar {
   border: 0;
 }
@@ -20,9 +16,25 @@ mark {
   background-color: #0adc82;
   border-color: #0adc82;
 }
+.nav > li > a {
+  padding: 2px 4px;
+}
 /* woo classes */
 .woo-content {
   margin-top: 59px;
+}
+woo-playground {
+  position: relative;
+}
+woo-playground .debug-highlight-1 {
+  background: rgba(51, 122, 183, 0.1) !important;
+  border: 1px solid rgba(51, 122, 183, 0.5) !important;
+  z-index: 5000;
+}
+woo-playground .debug-highlight-2 {
+  background: rgba(0, 21, 255, 0.1) !important;
+  border: 3px solid #337ab7 !important;
+  z-index: 5001;
 }
 /* woo area */
 .woo-area {
@@ -36,6 +48,29 @@ mark {
   padding-bottom: 5px;
   position: relative;
   box-shadow: none;
+}
+.inline {
+  position: relative !important;
+  left: 0px !important;
+  right: 0px !important;
+  top: 0px !important;
+  bottom: 0px !important;
+}
+.woo-debug-inspector {
+  background-color: rgba(255, 255, 255, 0.95);
+  position: absolute;
+  z-index: 1010;
+  width: 90%;
+  min-width: 200px;
+  left: 0px;
+  top: 20px;
+}
+.woo-debug-inspector-toggle {
+  margin-bottom: 0px;
+  position: absolute;
+  z-index: 1000;
+  left: 0px;
+  top: 0px;
 }
 .woo-area-header-options {
   margin-right: 6px;
@@ -59,6 +94,9 @@ mark {
   border-radius: 4px;
 }
 /* Browser */
+.woo-browser {
+  position: relative;
+}
 .woo-browser-list-item {
   padding: 5px 10px 5px 10px;
 }
@@ -76,6 +114,12 @@ mark {
   left: 145px;
   top: 72px;
   position: absolute;
+}
+.woo-transformation {
+  position: relative;
+}
+.woo-paper {
+  position: relative;
 }
 /* Custom Widgets Styling */
 .woo-line {
