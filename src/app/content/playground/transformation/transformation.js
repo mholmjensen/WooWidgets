@@ -11,6 +11,9 @@
 				transformation: '=',
 				candidate: '='
 			},
+			compile: function(tElement, tAttrs) {
+				tAttrs.$addClass( 'woo-transformation' );
+			},
       templateUrl: 'app/content/playground/transformation/transformation.tpl.html',
       controller: 'PlaygroundTransformationController',
       controllerAs: 'playgroundTransformationCtrl'
