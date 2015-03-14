@@ -1,5 +1,5 @@
 
-<div class="panel panel-{{panelType}} woo-area-panel"
+<div class="panel panel-success woo-area-panel"
 		 style="position: absolute;
 					  top: {{layout.style.top}}px;
 						left: {{layout.style.left}}px;
@@ -7,7 +7,7 @@
 						border-bottom-width: {{borderWidth || 1}}px;
 						border-right-width: {{borderWidth || 1}}px;
 						"
-		  woo-debug
+			woo-debug
 		 >
 	<div class="panel-heading woo-area-header">
 		<!-- TODO activate close and minimize menu -->
@@ -36,7 +36,7 @@
 						  height: {{layout.style.height}}px;"
 			 >
 		<div ng-transclude></div>
-<!-- Should be made into a directive, it can apply to any element -->
+		<!-- FIXME: Should be made into a directive, it can apply to any element -->
 		<div class="woo-area-footer-resize"
 				ng-mousedown="resizeStart( $event )">
 			<span class="fa fa-expand"></span>

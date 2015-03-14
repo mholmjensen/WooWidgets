@@ -1,14 +1,6 @@
 @import "../vendor/bootstrap/less/variables.less";
 @import "../vendor/animate.css/animate.css";
 
-@gray-lightest: lighten(@gray-base, 97.25%);
-@border-color: darken(@gray-lightest, 6.5%);
-
-.logo {
-  max-width: 90%;
-  margin: 20px;
-}
-
 @fadeInSpeed: 500ms;
 @fadeOutSpeed: 300ms;
 
@@ -49,33 +41,25 @@ mark {
   margin-top: 59px;
 }
 
-.woo-playground {
+woo-playground {
   position: relative;
 }
 
+@debug-highlight: @brand-primary;
 
-// Default scope class
+woo-playground .debug-highlight-1 {
+  background: fade(@debug-highlight, 10%) !important;
+  border: 1px solid fade(@debug-highlight, 50%) !important;
+  z-index: 5000;
+}
 
-// .woo-content .ng-scope{
-//   padding: 0px;
-//   margin: 0px;
-//   border: 1px solid black;
-//   background: hsla(10, 13%, 100%, .1) !important;
-// }
-//
-// .woo-content * > .ng-scope{
-//   background: hsla(10, 25%, 87%, .3) !important;
-// }
-//
-//
-// .woo-content * > .ng-scope * > .ng-scope {
-//   background: hsla(10, 37%, 63%, .6) !important;
-// }
-//
-//
-// .woo-content * > .ng-scope * > .ng-scope * > .ng-scope {
-//   background: hsla(10, 50%, 50%, .8) !important;
-// }
+woo-playground .debug-highlight-2 {
+  background: hsla(235, 100%, 50%, .1) !important;
+  border: 3px solid @debug-highlight !important;
+  z-index: 5001;
+}
+
+
 
 /* woo area */
 // TODO write the tree properly
@@ -96,34 +80,35 @@ mark {
   box-shadow: none;
 }
 
+
+
+.woo-debug {}
+
+.inline {
+  position: relative !important;
+  left: 0px !important;
+  right: 0px !important;
+  top: 0px !important;
+  bottom: 0px !important;
+}
+
 .woo-debug-inspector {
-  background-color: rgba(200, 200, 200, 0.8); // TODO find bootstrap color variables
+  background-color: fade(@component-active-color, 95%);
   position: absolute;
-  z-index: 1005;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  z-index: 1010;
   width: 90%;
   min-width: 200px;
+  left: 0px;
   top: 20px;
 }
 // TODO wrap scope for which data is viewer in color or shadow
 
 .woo-debug-inspector-toggle {
   margin-bottom: 0px;
-  background-color: rgba(200, 200, 200, 0.8); // TODO find bootstrap color variables
   position: absolute;
-  z-index: 995;
-  left: -10px;
-  top: -5px;
-}
-
-.inline {
-  position: relative;
-  z-index: 0;
+  z-index: 1000;
   left: 0px;
   top: 0px;
-  bottom: 0px;
-  right: 0px;
 }
 
 
@@ -191,9 +176,11 @@ mark {
 }
 
 .woo-transformation {
+  position: relative;
 }
 
 .woo-paper {
+  position: relative;
 }
 
 

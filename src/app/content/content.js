@@ -7,7 +7,6 @@
     return {
       restrict: 'EA',
       scope: true,
-			transclude: true,
       templateUrl: 'app/content/content.tpl.html'
     };
   })

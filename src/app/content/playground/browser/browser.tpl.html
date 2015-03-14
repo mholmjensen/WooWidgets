@@ -1,48 +1,47 @@
 <div woo-debug>
-  <div woo-debug-inspector-toggle></div>
-  <div woo-debug-inspector></div>
-  <div>
-    <ul class="list-group woo-browser-file-list"
-        dnd-list="files">
-      <li ng-repeat="file in files"
-          class="list-group-item woo-browser-list-item"
-          >
-          <div class="woo-browser-file"
-               dnd-draggable="file"
-               dnd-selected="fileSelected( event, file )"
-               dnd-effect-allowed="move"
-               dnd-moved="fileMoved( event, $index, file )"
-               file="file"
-               ng-class="">
-            {{$index + 1}})
-          <!-- <span ng-show="$index === 0" class="woo-browser-file-rearrange">
-             <span class="fa fa-long-arrow-down"></span>
-            </span>
-            <span ng-show="$index > 0 && $index < browser.files.length - 1" class="woo-browser-file-rearrange">
-             <span class="fa fa-arrows-v"></span>
-            </span>
-            <span ng-show="$index === browser.files.length - 1" class="woo-browser-file-rearrange">
-             <span class="fa fa-long-arrow-up"></span>
-            </span> -->
-               <!-- TODO: modes for unsaved? recently edited? -->
 
-              <span ng-show="currentFile.name === file.name" class="woo-browser-file-rearrange" ng-dblclick="editingName != editingName">
-                <input ng-model="file.name" ng-show="editingName">
-                <b ng-show="!editingName">{{file.name}}</b>
-              </span>
-              <span ng-show="currentFile.name !== file.name" class="woo-browser-file-rearrange">
-                {{file.name}}
-              </span>
+<div woo-debug-inspector-toggle></div>
+<div woo-debug-inspector></div>
+  <ul class="list-group woo-browser-file-list"
+    dnd-list="files"
+    >
+    <li ng-repeat="file in files"
+      class="list-group-item woo-browser-list-item"
+      >
+      <div class="woo-browser-file"
+           dnd-draggable="file"
+           dnd-selected="fileSelected( event, file )"
+           dnd-effect-allowed="move"
+           dnd-moved="fileMoved( event, $index, file )"
+           file="file"
+           ng-class="">
+        {{$index + 1}})
+      <!-- <span ng-show="$index === 0" class="woo-browser-file-rearrange">
+         <span class="fa fa-long-arrow-down"></span>
+        </span>
+        <span ng-show="$index > 0 && $index < browser.files.length - 1" class="woo-browser-file-rearrange">
+         <span class="fa fa-arrows-v"></span>
+        </span>
+        <span ng-show="$index === browser.files.length - 1" class="woo-browser-file-rearrange">
+         <span class="fa fa-long-arrow-up"></span>
+        </span> -->
+           <!-- TODO: modes for unsaved? recently edited? -->
 
-              <span class="badge woo-browser-file-information">
-                <span class="fa fa-pencil" aria-hidden="true" ng-show="file.type === 'paper'"></span>
-                <span class="fa fa-cog" aria-hidden="true" ng-show="file.type === 'logic'"></span>
-                <span class="fa fa-music" aria-hidden="true" ng-show="file.type === 'tabs'"></span>
-              </span>
-            <div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+          <span ng-show="currentFile.name === file.name" class="woo-browser-file-rearrange" ng-dblclick="editingName != editingName">
+            <input ng-model="file.name" ng-show="editingName">
+            <b ng-show="!editingName">{{file.name}}</b>
+          </span>
+          <span ng-show="currentFile.name !== file.name" class="woo-browser-file-rearrange">
+            {{file.name}}
+          </span>
+
+          <span class="badge woo-browser-file-information">
+            <span class="fa fa-pencil" aria-hidden="true" ng-show="file.type === 'paper'"></span>
+            <span class="fa fa-cog" aria-hidden="true" ng-show="file.type === 'logic'"></span>
+            <span class="fa fa-music" aria-hidden="true" ng-show="file.type === 'tabs'"></span>
+          </span>
+        <div>
+      </div>
+    </li>
+  </ul>
+<div>

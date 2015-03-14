@@ -7,10 +7,13 @@
 				</span>
 		</label>
 	</div>
-	<hr>
 
 	<div ng-repeat="dw in inspector.dataToWatch | orderBy: 'name'" ng-show="dw.show">
-		<h5 style="margin-left: 15px;">{{dw.name}}</h5>
+		<h5 style="margin-left: 10px;">{{dw.name}}</h5>
 		<json-formatter json="dw.ref" open="2">
+	</div>
+
+	<div ng-show="inspector.dataToWatch.length == 0" style="margin-top: 15px">
+		Nothing to inspect here.
 	</div>
 </div>
