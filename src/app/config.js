@@ -3,8 +3,6 @@
 
 	angular.module('woo.config', ['woo.content', 'woo.menu'])
 
-	.constant('FB', 'https://snippetmanager.firebaseio.com/')
-
 	.config(function( $urlRouterProvider, $stateProvider ) {
 		$urlRouterProvider.otherwise('/');
 
